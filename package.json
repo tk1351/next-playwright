@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier . -w",
+    "test:e2e": "playwright test",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui"
   },
   "dependencies": {
     "next": "14.0.4",
@@ -21,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^0.21.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "3.1.1",
     "typescript": "^5"
