@@ -1,10 +1,23 @@
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { Todo } from "@/types";
+import { getTodoList } from "@/lib/todo";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export const getServerSideProps = (async () => {
+  const response = await getTodoList();
+  return {
+    props: { todos: response },
+  };
+}) satisfies GetServerSideProps<{ todos: Todo[] }>;
+
+export default function Home({
+  todos,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -13,7 +26,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}></main>
+      <main className={`${styles.main} ${inter.className}`}>
+        <div>
+          {!todos && <p>Loading...</p>}
+          {todos && (
+            <ul>
+              {todos.map((todo) => (
+                <li key={todo.id}>
+                  <Link href={`todo/${todo.id}`}>{todo.title}</Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </main>
     </>
   );
 }
