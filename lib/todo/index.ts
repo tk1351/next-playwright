@@ -22,3 +22,16 @@ export const getTodo = async (id: string): Promise<Todo> => {
     async (response) => (await response.json()) as Todo,
   );
 };
+
+export const createTodo = async (
+  title: string,
+  completed: boolean,
+): Promise<Todo> => {
+  return await fetch(`${BASE_URL}`, {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      completed,
+    }),
+  }).then(async (response) => (await response.json()) as Todo);
+};
