@@ -8,7 +8,7 @@ test.describe("Testing Home Component", () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test("一つ目のリンクをクリックしたとき、 URL がa切り替わっていること", async ({
+  test("一つ目のリンクをクリックしたとき、 URL が切り替わっていること", async ({
     page,
   }) => {
     const FIRST_TODO_TITLE = "delectus aut autem";
