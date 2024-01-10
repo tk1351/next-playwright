@@ -17,7 +17,6 @@ export default function TodoDetail({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div>
-      {!todo && <p>Loading...</p>}
       {todo && <h1>{todo.title}</h1>}
       <Link href="/">Go Back</Link>
     </div>

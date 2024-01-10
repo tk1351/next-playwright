@@ -2,11 +2,18 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import styled from "styled-components";
 import styles from "@/styles/Home.module.css";
 import { Todo } from "@/types";
 import { getTodoList } from "@/lib/todo";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const StyledLink = styled.span.attrs(() => ({}))`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 export const getServerSideProps = (async () => {
   const response = await getTodoList();
@@ -28,12 +35,13 @@ export default function Home({
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div>
-          {!todos && <p>Loading...</p>}
           {todos && (
             <ul>
               {todos.map((todo) => (
                 <li key={todo.id}>
-                  <Link href={`todo/${todo.id}`}>{todo.title}</Link>
+                  <Link href={`todo/${todo.id}`} passHref>
+                    <StyledLink>{todo.title}</StyledLink>
+                  </Link>
                 </li>
               ))}
             </ul>

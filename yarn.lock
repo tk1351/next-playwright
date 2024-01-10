@@ -3344,7 +3344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.1.8":
+"styled-components@npm:^6":
   version: 6.1.8
   resolution: "styled-components@npm:6.1.8"
   dependencies:
