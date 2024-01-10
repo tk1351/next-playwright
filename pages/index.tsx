@@ -6,14 +6,9 @@ import styled from "styled-components";
 import styles from "@/styles/Home.module.css";
 import { Todo } from "@/types";
 import { getTodoList } from "@/lib/todo";
+import { Stack } from "@/pages/components/Stack";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
 
 const StyledCreateTodoLink = styled.span.attrs(() => ({}))`
   &:hover {
