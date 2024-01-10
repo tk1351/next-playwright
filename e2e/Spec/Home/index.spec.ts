@@ -17,4 +17,13 @@ test.describe("Testing Home Component", () => {
     await page.getByRole("link", { name: FIRST_TODO_TITLE }).click();
     await expect(page).toHaveURL(URL);
   });
+
+  test("Todo作成リンクをクリックしたとき、 URL が切り替わっていること", async ({
+    page,
+  }) => {
+    const URL = "/todo/create";
+
+    await page.getByRole("link", { name: "Create Todo" }).click();
+    await expect(page).toHaveURL(URL);
+  });
 });

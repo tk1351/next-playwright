@@ -10,7 +10,8 @@
     "format": "prettier . -w",
     "test:e2e": "playwright test",
     "test:debug": "playwright test --debug",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "test:update-snapshot": "playwright test -u"
   },
   "dependencies": {
     "next": "14.0.4",

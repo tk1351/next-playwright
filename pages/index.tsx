@@ -9,6 +9,18 @@ import { getTodoList } from "@/lib/todo";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const Stack = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const StyledCreateTodoLink = styled.span.attrs(() => ({}))`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const StyledLink = styled.span.attrs(() => ({}))`
   &:hover {
     text-decoration: underline;
@@ -34,7 +46,10 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div>
+        <Stack>
+          <Link href="/todo/create" passHref>
+            <StyledCreateTodoLink>Create Todo</StyledCreateTodoLink>
+          </Link>
           {todos && (
             <ul>
               {todos.map((todo) => (
@@ -46,7 +61,7 @@ export default function Home({
               ))}
             </ul>
           )}
-        </div>
+        </Stack>
       </main>
     </>
   );
