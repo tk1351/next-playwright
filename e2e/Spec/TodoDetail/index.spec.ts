@@ -1,8 +1,10 @@
 import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
+  const FIRST_TODO_TITLE = "delectus aut autem";
+
   await page.goto("/");
-  await page.getByRole("link", { name: "delectus aut autem" }).click();
+  await page.getByRole("link", { name: FIRST_TODO_TITLE }).click();
 });
 
 test.describe("Testing TodoDetail Component", () => {
@@ -10,10 +12,11 @@ test.describe("Testing TodoDetail Component", () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test("リンクをクリックしたとき、 URL が切り替わっていること", async ({
+  test("戻るリンクをクリックしたとき、 URL が切り替わっていること", async ({
     page,
   }) => {
     await page.getByRole("link", { name: "Go Back" }).click();
-    await expect(page).not.toHaveURL("/todo/1");
+    await expect.soft(page).not.toHaveURL("/todo/1");
+    await expect(page).toHaveURL("/");
   });
 });
