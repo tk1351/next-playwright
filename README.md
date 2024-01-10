@@ -1,40 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+下記手順で依存関係をインストールし、開発サーバーを立ち上げられます
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Playwright
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+下記の通りコマンドを用意しています。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+# 通常の playwright test
+yarn test:e2e
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# debug モード（ブラウザが自動で立ち上がります）
+yarn test:debug
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# ui モード（debug モードより詳細の確認が可能です）
+# 参照: https://zenn.dev/keita_hino/articles/6f2e30930bb2cd
+yarn test:ui
 
-## Learn More
+# スクリーンショットの更新ができます
+yarn test:update-snapshot
+```
 
-To learn more about Next.js, take a look at the following resources:
+`e2e/Spec` 配下に各テストを記述しています。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`e2e/__screenshots__` 配下に各テストファイルで `toHaveScreenShot()` で取得した画像が自動で保存されます。
