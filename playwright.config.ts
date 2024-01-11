@@ -69,6 +69,7 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
+  // 既にデプロイされている環境があり、コマンドを実行する必要がない場合は不要
   webServer: {
     command: "yarn dev",
     url: "http://localhost:3000",

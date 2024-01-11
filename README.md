@@ -4,6 +4,8 @@
 
 ```bash
 yarn install
+
+# http://localhost:3000 で立ち上がります
 yarn dev
 ```
 
@@ -29,3 +31,11 @@ yarn test:update-snapshot
 `e2e/Spec` 配下に各テストを記述しています。
 
 `e2e/__screenshots__` 配下に各テストファイルで `toHaveScreenShot()` で取得した画像が自動で保存されます。
+
+`yarn test:e2e` を実行したのち、 `yarn playwright show-report` を実行 or テストが失敗すると、
+
+http://localhost:9323/ でテスト詳細が確認できるレポート画面を立ち上げることができます。
+
+スクリーンショット比較のテストをわざと失敗させたい場合は、 `pages` 配下の `tsx` ファイルに適当な要素を追加し、
+
+再度 `yarn test:e2e` コマンドを実行してください。
