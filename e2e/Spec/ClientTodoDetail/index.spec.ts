@@ -5,6 +5,8 @@ test.beforeEach(async ({ page }) => {
 
   await page.goto("/client");
   await page.getByRole("link", { name: FIRST_TODO_TITLE }).click();
+  // API から GET 完了するのを待機
+  await page.getByRole("heading").waitFor();
 });
 
 test.describe("Testing ClientTodoDetail Component", () => {

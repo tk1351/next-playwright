@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/client");
+  // API から GET 完了するのを待機
+  await page.getByRole("list").waitFor();
 });
 
 test.describe("Testing ClientHome Component", () => {
